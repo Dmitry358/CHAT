@@ -71,9 +71,6 @@ jobs:
             echo "📦 Create the app3 directory if it doesn't exist"
             mkdir -p /home/miti/my_apps/chat
 
-            echo "📦 Deploy new JAR"
-            mv /home/miti/my_apps/chat/chat.jar /home/miti/my_apps/chat/chat.jar  # Rinomina il file JAR
-
             echo "📦 Start app3"
             nohup java -jar /home/miti/my_apps/chat/chat.jar > /home/miti/my_apps/chat/chat.log 2>&1 &
 
