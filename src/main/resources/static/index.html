@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>App Chat</title>
     <link rel="stylesheet" href="css/chat.css">
+    <script src="js/chat.js" defer></script>
 </head>
 <body>
 
@@ -12,25 +13,6 @@
 
 <input id="msg" placeholder="Scrivi..." />
 <button onclick="send()">Otpravit</button>
-
-<script>
-    const protocol = location.protocol === "https:" ? "wss" : "ws";
-    const ws = new WebSocket(`${protocol}://${location.host}/chat/ws`);
-    const chat = document.getElementById("chat");
-
-    ws.onmessage = e => {
-      const div = document.createElement("div");
-      div.textContent = e.data;
-      chat.appendChild(div);
-      chat.scrollTop = chat.scrollHeight;
-    };
-
-    function send() {
-      const input = document.getElementById("msg");
-      ws.send(input.value);
-      input.value = "";
-    }
-</script>
 
 </body>
 </html>
