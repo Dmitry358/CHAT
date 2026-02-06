@@ -25,7 +25,6 @@
     </properties>
 
     <dependencies>
-
         <!-- Web + embedded Tomcat -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
