@@ -28,15 +28,14 @@ public class AuthController {
                       Model model) {
     if (userService.checkLogin(username, password)) {
       session.setAttribute("username", username);
-      return "welcome"; // страница после логина
-    }
-    else {
+      // Редиректим сразу в чат
+      return "redirect:/chatroom";
+    } else {
       model.addAttribute("error", "Неверный логин или пароль");
       return "login";
     }
   }
 
-  // GET /chat/register → форма регистрации
   @GetMapping("/register")
   public String showRegisterForm() {
     return "register";
@@ -50,5 +49,18 @@ public class AuthController {
     model.addAttribute("message", "Пользователь зарегистрирован! Войдите в систему");
     return "login";
   }
+
+  @GetMapping("/chatroom")
+  public String chatroom(HttpSession session, Model model) {
+    // Проверяем, что пользователь залогинен
+    String username = (String) session.getAttribute("username");
+    if (username == null) {
+      return "redirect:/"; // если не залогинен → login
+    }
+
+    model.addAttribute("username", username);
+    return "chatroom"; // Spring ищет src/main/resources/templates/chatroom.html
+  }
+
 }
 

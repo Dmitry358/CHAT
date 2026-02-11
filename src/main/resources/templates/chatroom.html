@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Room</title>
+    <style>
+        body { display: flex; font-family: Arial; }
+        #sidebar { width: 200px; border-right: 1px solid #ccc; padding: 10px; }
+        #chat-window { flex: 1; padding: 10px; }
+        #messages { height: 400px; overflow-y: scroll; border: 1px solid #ccc; padding: 5px; }
+    </style>
+</head>
+<body>
+<div id="sidebar">
+    <h3>Пользователи</h3>
+    <ul id="users-list"></ul>
+</div>
+
+<div id="chat-window">
+    <h3>Чат с <span id="chat-with"></span></h3>
+    <div id="messages"></div>
+    <input id="msg" placeholder="Написать сообщение..." />
+    <button onclick="sendMessage()">Отправить</button>
+</div>
+
+<script>
+    const currentUser = /*[[${username}]]*/ 'User';
+    let selectedUser = '';
+
+    // TODO: подключение WebSocket и загрузка списка пользователей
+</script>
+</body>
+</html>
