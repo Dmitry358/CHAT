@@ -6,13 +6,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>mitiok.company</groupId>
-    <artifactId>CHAT</artifactId>
+    <artifactId>chat</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>mitiok-chat</name>
-    <description>Simple public WebSocket chat</description>
+    <description>Chat application on Spring Boot</description>
 
+    <!-- SPRING BOOT -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -25,7 +26,8 @@
     </properties>
 
     <dependencies>
-        <!-- Web + embedded Tomcat -->
+
+        <!-- REST + embedded Tomcat -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -37,30 +39,44 @@
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
 
-        <!-- Logging (già incluso, ma esplicito) -->
+        <!-- JPA / Hibernate -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-logging</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
+        <!-- PostgreSQL driver -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Thymeleaf templates -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!-- (ПОЗЖЕ) Security / JWT -->
+        <!--
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        -->
 
     </dependencies>
 
+
     <build>
-        <!-- NOME FISSO DEL JAR -->
         <finalName>chat</finalName>
 
         <plugins>
-            <!-- Spring Boot fat-jar -->
+            <!-- Spring Boot fat jar -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
