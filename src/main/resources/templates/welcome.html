@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+    <meta charset="UTF-8">
     <title>Welcome</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; text-align: center; }
+    </style>
 </head>
 <body>
-<h2>Welcome, <span th:text="${username}"></span>!</h2>
+<h2>Добро пожаловать, <span th:text="${username}"></span>!</h2>
+<p>Вы успешно вошли в систему.</p>
+<a href="/chat/">Выйти</a>
 </body>
 </html>
